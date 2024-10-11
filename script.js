@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const refreshInterval = 30000; // 30 seconds
     const transitionInterval = 10000; // 10 seconds
-    const grades = [4, 5, 6];
+    const grades = [4, 5, 6, 13, 14]; // Added 13 for 1/3 and 14 for 1/4
     let currentSlideIndex = 0;
 
     function animateScore(element, start, end, duration) {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     gradeStudents.forEach((student, index) => {
                         const studentDiv = document.createElement('div');
-                        studentDiv.classList.add('student'); // Apply student class
+                        studentDiv.classList.add('student');
 
                         if (index === 0) {
                             studentDiv.classList.add('top-student');
@@ -59,23 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         studentList.appendChild(studentDiv);
 
-                        // Animate score
                         const scoreElement = studentDiv.querySelector('.student-score');
                         animateScore(scoreElement, 0, student.score, 2000);
 
-                        // Apply staggered animation
                         studentDiv.style.animationDelay = `${index * 0.2}s`;
                         studentDiv.classList.add('fade-up');
                     });
 
-                    topStudents.push(...gradeStudents.slice(0, 1)); // Collect top student from each grade
+                    topStudents.push(...gradeStudents.slice(0, 1));
                 });
 
                 // Display top students in the combined leaderboard
                 const combinedList = document.getElementById('studentList-all');
-                combinedList.innerHTML = ''; // Clear existing content
+                combinedList.innerHTML = '';
 
-                topStudents.sort((a, b) => b.score - a.score); // Sort top students across grades
+                topStudents.sort((a, b) => b.score - a.score);
 
                 const podiumDiv = document.createElement('div');
                 podiumDiv.classList.add('podium');
@@ -97,13 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     studentDiv.innerHTML += `
                         <img src="${student.img}" alt="${student.name}" onerror="this.src='default.jpg';">
                         <div class="student-top-name">${student.name}</div>
-                        <div class="student-top-grade">Grade ${student.grade}</div>
+                        <div class="student-top-grade">${getGradeDisplay(student.grade)}</div>
                         <div class="student-top-score" data-score="${student.score}">0</div>
                     `;
 
                     podiumDiv.appendChild(studentDiv);
 
-                    // Animate score
                     const scoreElement = studentDiv.querySelector('.student-top-score');
                     animateScore(scoreElement, 0, student.score, 2000);
                 });
@@ -115,6 +112,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    function getGradeDisplay(grade) {
+        switch(parseInt(grade)) {
+            case 13: return 'Class 1/3';
+            case 14: return 'Class 1/4';
+            default: return `Grade ${grade}`;
+        }
+    }
+
     function showNextSlide() {
         const leaderboards = document.querySelectorAll('.leaderboard');
         leaderboards.forEach(leaderboard => {
@@ -123,11 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
         leaderboards[currentSlideIndex].classList.add('active');
         currentSlideIndex = (currentSlideIndex + 1) % leaderboards.length;
 
-        // Re-apply fade-up animation to all student containers
         setTimeout(() => {
             document.querySelectorAll(`.leaderboard.active .student, .leaderboard.active .student-top`).forEach((student, index) => {
                 student.style.animation = 'none';
-                student.offsetHeight; // Trigger reflow to restart animation
+                student.offsetHeight;
                 student.style.animation = '';
                 student.style.animationDelay = `${index * 0.2}s`;
                 student.classList.add('fade-up');
@@ -135,15 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
-    // Fetch data initially
     fetchData();
-
-    // Set interval to fetch data periodically
     setInterval(fetchData, refreshInterval);
-
-    // Show the first slide initially
     showNextSlide();
-
-    // Set interval to switch between slides
     setInterval(showNextSlide, transitionInterval);
 });
