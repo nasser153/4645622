@@ -9,60 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            element.textContent = `Score: ${Math.floor(progress * (end - start) + start)}`;
+            element.textContent = `${Math.floor(progress * (end - start) + start)}`;
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             }
         };
         window.requestAnimationFrame(step);
-    }
-
-    function createStudentElement(student, index) {
-        const studentDiv = document.createElement('div');
-        studentDiv.classList.add('student');
-
-        const img = document.createElement('img');
-        img.src = student.img;
-        img.alt = student.name;
-        img.onerror = "this.src='default.jpg';";
-
-        const infoDiv = document.createElement('div');
-        infoDiv.classList.add('student-info');
-
-        const nameDiv = document.createElement('div');
-        nameDiv.classList.add('student-name');
-        nameDiv.textContent = student.name;
-
-        const scoreDiv = document.createElement('div');
-        scoreDiv.classList.add('student-score');
-        scoreDiv.textContent = `Score: 0`;
-
-        infoDiv.appendChild(nameDiv);
-        infoDiv.appendChild(scoreDiv);
-
-        studentDiv.appendChild(img);
-        studentDiv.appendChild(infoDiv);
-
-        if (index === 0) {
-            const crown = document.createElement('span');
-            crown.classList.add('crown');
-            crown.textContent = '👑';
-            studentDiv.appendChild(crown);
-        }
-
-        animateScore(scoreDiv, 0, student.score, 2000);
-
-        return studentDiv;
-    }
-
-    function updateLeaderboard(grade, students) {
-        const studentList = document.getElementById(`studentList-${grade}`);
-        studentList.innerHTML = '';
-
-        students.forEach((student, index) => {
-            const studentElement = createStudentElement(student, index);
-            studentList.appendChild(studentElement);
-        });
     }
 
     function fetchData() {
@@ -75,25 +27,97 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(csvText => {
                 const students = Papa.parse(csvText, { header: true }).data;
+                const topStudents = [];
 
                 grades.forEach(grade => {
+                    const studentList = document.getElementById(`studentList-${grade}`);
+                    studentList.innerHTML = ''; // Clear existing content
+
                     const gradeStudents = students.filter(student => parseInt(student.grade) === grade);
                     gradeStudents.sort((a, b) => b.score - a.score);
-                    updateLeaderboard(grade, gradeStudents);
+
+                    gradeStudents.forEach((student, index) => {
+                        const studentDiv = document.createElement('div');
+                        studentDiv.classList.add('student');
+
+                        if (index === 0) {
+                            studentDiv.classList.add('top-student');
+                            studentDiv.innerHTML += `<div class="crown">👑</div><div class="top-text">TOP 1</div>`;
+                        } else if (index === 1) {
+                            studentDiv.classList.add('second-student');
+                            studentDiv.innerHTML += `<div class="top-text">TOP 2</div>`;
+                        } else if (index === 2) {
+                            studentDiv.classList.add('third-student');
+                            studentDiv.innerHTML += `<div class="top-text">TOP 3</div>`;
+                        }
+
+                        studentDiv.innerHTML += `
+                            <img src="${student.img}" alt="${student.name}" onerror="this.src='default.jpg';">
+                            <div class="student-name">${student.name}</div>
+                            <div class="student-score" data-score="${student.score}">0</div>
+                        `;
+
+                        studentList.appendChild(studentDiv);
+
+                        const scoreElement = studentDiv.querySelector('.student-score');
+                        animateScore(scoreElement, 0, student.score, 2000);
+
+                        studentDiv.style.animationDelay = `${index * 0.2}s`;
+                        studentDiv.classList.add('fade-up');
+                    });
+
+                    topStudents.push(...gradeStudents.slice(0, 1));
                 });
 
-                // Update combined leaderboard
-                const topStudents = grades.flatMap(grade => 
-                    students.filter(student => parseInt(student.grade) === grade)
-                           .sort((a, b) => b.score - a.score)
-                           .slice(0, 1)
-                );
+                // Display top students in the combined leaderboard
+                const combinedList = document.getElementById('studentList-all');
+                combinedList.innerHTML = '';
+
                 topStudents.sort((a, b) => b.score - a.score);
-                updateLeaderboard('all', topStudents);
+
+                const podiumDiv = document.createElement('div');
+                podiumDiv.classList.add('podium');
+
+                topStudents.slice(0, 3).forEach((student, index) => {
+                    const studentDiv = document.createElement('div');
+                    studentDiv.classList.add('student-top');
+                    if (index === 0) {
+                        studentDiv.classList.add('first-place');
+                        studentDiv.innerHTML += `<div class="top-text">TOP 1</div><div class="crown">👑</div>`;
+                    } else if (index === 1) {
+                        studentDiv.classList.add('second-place');
+                        studentDiv.innerHTML += `<div class="top-text">TOP 2</div>`;
+                    } else if (index === 2) {
+                        studentDiv.classList.add('third-place');
+                        studentDiv.innerHTML += `<div class="top-text">TOP 3</div>`;
+                    }
+
+                    studentDiv.innerHTML += `
+                        <img src="${student.img}" alt="${student.name}" onerror="this.src='default.jpg';">
+                        <div class="student-top-name">${student.name}</div>
+                        <div class="student-top-grade">${getGradeDisplay(student.grade)}</div>
+                        <div class="student-top-score" data-score="${student.score}">0</div>
+                    `;
+
+                    podiumDiv.appendChild(studentDiv);
+
+                    const scoreElement = studentDiv.querySelector('.student-top-score');
+                    animateScore(scoreElement, 0, student.score, 2000);
+                });
+
+                combinedList.appendChild(podiumDiv);
             })
             .catch(error => {
                 console.error("Error fetching CSV data:", error);
             });
+    }
+
+    function getGradeDisplay(grade) {
+        switch(parseInt(grade)) {
+            case 13: return 'Class 1/3';
+            case 14: return 'Class 1/4';
+            default: return `Grade ${grade}`;
+        }
     }
 
     function showNextSlide() {
@@ -103,6 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         leaderboards[currentSlideIndex].classList.add('active');
         currentSlideIndex = (currentSlideIndex + 1) % leaderboards.length;
+
+        setTimeout(() => {
+            document.querySelectorAll(`.leaderboard.active .student, .leaderboard.active .student-top`).forEach((student, index) => {
+                student.style.animation = 'none';
+                student.offsetHeight;
+                student.style.animation = '';
+                student.style.animationDelay = `${index * 0.2}s`;
+                student.classList.add('fade-up');
+            });
+        }, 100);
     }
 
     fetchData();
