@@ -46,7 +46,7 @@ body {
     display: inline-block;
     white-space: nowrap;
     padding-left: 100%;
-    animation: ticker 30s linear infinite;
+    animation: ticker 30s linear infinite reverse;
     line-height: 70px; /* Match the height of the news ticker */
 }
 
