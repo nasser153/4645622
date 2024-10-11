@@ -145,7 +145,7 @@ body {
 
 .student-score {
     margin-top: 5px;
-    font-size: 3em; /* Increase font size */
+    font-size: 2em; /* Increase font size */
     color: #fff; /* Ensure the score text is readable */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
