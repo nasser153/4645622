@@ -1,45 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Leaderboard</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="logo">
-        <img src="logo.png" alt="Logo"> <!-- Update with your logo's filename -->
-    </div>
-    <div class="news-ticker">
-        <div class="news-ticker__content">
-            <p id="news-text">Here goes your Arabic news text moving from right to left.</p>
-        </div>
-    </div>
-    <div class="leaderboard" id="leaderboard-all">
-        <h1 class="header">الأعلى رصيد على مستوى الفصول</h1>
-        <div class="student-list" id="studentList-all"></div>
-    </div>
-    <div class="leaderboard" id="leaderboard-4">
-        <h1 class="header">4th Grade Leaderboard</h1>
-        <div class="student-list" id="studentList-4"></div>
-    </div>
-    <div class="leaderboard" id="leaderboard-5">
-        <h1 class="header">5th Grade Leaderboard</h1>
-        <div class="student-list" id="studentList-5"></div>
-    </div>
-    <div class="leaderboard" id="leaderboard-6">
-        <h1 class="header">6th Grade Leaderboard</h1>
-        <div class="student-list" id="studentList-6"></div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        function updateNewsText(newText) {
-            document.getElementById('news-text').textContent = newText;
-        }
+:::: {#leaderboard-all .leaderboard}
+# الأعلى رصيد على مستوى الفصول {#الأعلى-رصيد-على-مستوى-الفصول .header}
 
-        // Example usage:
-        updateNewsText('الطلاب الأعلى رصيد في تحديات مادة اللغة الانجليزية');
-    </script>
-</body>
-</html>
+::: {#studentList-all .student-list}
+:::
+::::
+
+:::: {#leaderboard-4 .leaderboard}
+# 4th Grade Leaderboard {#th-grade-leaderboard .header}
+
+::: {#studentList-4 .student-list}
+:::
+::::
+
+:::: {#leaderboard-5 .leaderboard}
+# 5th Grade Leaderboard {#th-grade-leaderboard-1 .header}
+
+::: {#studentList-5 .student-list}
+:::
+::::
+
+:::: {#leaderboard-6 .leaderboard}
+# 6th Grade Leaderboard {#th-grade-leaderboard-2 .header}
+
+::: {#studentList-6 .student-list}
+:::
+::::
+
+:::: {#leaderboard-13 .leaderboard}
+# 1/3 Class Leaderboard {#class-leaderboard .header}
+
+::: {#studentList-13 .student-list}
+:::
+::::
+
+:::: {#leaderboard-14 .leaderboard}
+# 1/4 Class Leaderboard {#class-leaderboard-1 .header}
+
+::: {#studentList-14 .student-list}
+:::
+::::
