@@ -1,5 +1,14 @@
+@font-face {
+    font-family: 'noor-bold';
+    src: url('fonts/your-arabic-font.woff2') format('woff2'),
+         url('fonts/your-arabic-font.woff') format('woff'),
+         url('noorfonts/noor-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: bold;
+
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'noorfonts-bold', Arial, sans-serif;
     background: linear-gradient(270deg, #f39c12, #e74c3c, #8e44ad, #3498db);
     background-size: 800% 800%;
     animation: gradientAnimation 15s ease infinite;
