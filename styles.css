@@ -1,3 +1,4 @@
+
 body {
     font-family: 'noorfonts-bold', Arial, sans-serif;
     background: linear-gradient(270deg, #f39c12, #e74c3c, #8e44ad, #3498db);
@@ -39,7 +40,7 @@ body {
     background: rgba(0, 0, 0, 0.7);
     color: #fff;
     z-index: 1000;
-    height: 70px;
+    height: 70px; /* Increased height */
 }
 
 .news-ticker__content {
@@ -47,18 +48,25 @@ body {
     white-space: nowrap;
     padding-left: 100%;
     animation: ticker 20s linear infinite reverse;
-    line-height: 70px;
-    font-size: 2em;
-    padding: 10px 0;
+    line-height: 70px; /* Match the height of the news ticker */
 }
 
 @keyframes ticker {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.news-ticker__content {
+    font-size: 2em; /* Increased font size */
+    padding: 10px 0; /* Added vertical padding */
 }
 
 .leaderboard {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -67,7 +75,7 @@ body {
     position: absolute;
     opacity: 0;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out, top 1s ease-in-out;
-    top: 100vh;
+    top: 100vh; /* Start below the visible area */
     transform: scale(1);
 }
 
@@ -79,88 +87,102 @@ body {
 
 .header {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Reduce the margin to lessen the gap */
     font-size: 2em;
 }
 
 .student-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    max-height: 80vh;
-    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Increase min-width */
+    gap: 30px; /* Increase gap between boxes */
+    justify-content: center; /* Center the grid horizontally */
+    align-content: center; /* Center the grid vertically */
+    height: 100%; /* Ensure the student list takes the full height */
+    padding: 20px; /* Add padding for better spacing */
 }
 
 .student {
-    display: flex;
-    align-items: center;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    padding: 10px;
+    text-align: center;
+    padding: 20px; /* Increase padding */
     transition: transform 0.3s ease, opacity 0.3s ease;
-    animation: fadeInSlide 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards; /* Apply fadeUp animation once */
+    position: relative; /* For positioning crown and stars */
 }
 
-@keyframes fadeInSlide {
-    0% { opacity: 0; transform: translateX(-20px); }
-    100% { opacity: 1; transform: translateX(0); }
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.student:hover {
+    transform: scale(1.05);
 }
 
 .student img {
-    width: 50px;
-    height: 50px;
     border-radius: 50%;
-    margin-right: 15px;
-}
-
-.student-info {
-    flex-grow: 1;
+    width: 120px; /* Increase width */
+    height: 120px; /* Increase height */
+    display: block;
+    margin: 0 auto 10px;
 }
 
 .student-name {
-    font-size: 1.2em;
+    margin-top: 10px;
+    font-size: 2em; /* Increase font size */
     font-weight: bold;
-    margin-bottom: 5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
 .student-score {
-    font-size: 1em;
+    margin-top: 5px;
+    font-size: 2em; /* Increase font size */
+    color: #fff; /* Ensure the score text is readable */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
-.student:nth-child(1) {
-    background: linear-gradient(45deg, #FFD700, #FFA500);
-    animation: goldSweep 2s infinite alternate;
+.top-student {
+    background: linear-gradient(45deg, #FFD700, #FFA500); /* Gold gradient */
+    background-size: 200% 200%;
+    position: relative;
 }
 
-.student:nth-child(2) {
-    background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
-    animation: silverSweep 2s infinite alternate;
+.second-student {
+    background: linear-gradient(45deg, #C0C0C0, #A9A9A9); /* Silver gradient */
+    background-size: 200% 200%;
+    position: relative;
 }
 
-.student:nth-child(3) {
-    background: linear-gradient(45deg, #CD7F32, #8B4513);
-    animation: bronzeSweep 2s infinite alternate;
+.third-student {
+    background: linear-gradient(45deg, #CD7F32, #8B4513); /* Bronze gradient */
+    background-size: 200% 200%;
+    position: relative;
 }
 
-@keyframes goldSweep {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
+.top-student .crown,
+.second-student .crown,
+.third-student .crown {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 56px;
 }
 
-@keyframes silverSweep {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-@keyframes bronzeSweep {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-.crown {
-    font-size: 1.5em;
-    margin-left: 10px;
+.top-student .top-text,
+.second-student .top-text,
+.third-student .top-text {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 8px;
+    border-radius: 5px;
 }
 
 /* Styles for the top students slide */
@@ -174,13 +196,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    width: 300px;
+    width: 300px; /* Increase width */
     margin: 10px;
     animation: fadeInUp 1s ease forwards, growHeight 1s ease forwards;
 }
 
 .student-top img {
-    border-radius: 15px;
+    border-radius: 15px; /* Curved corners */
     width: 100px;
     height: 100px;
 }
@@ -189,21 +211,103 @@ body {
     margin-top: 10px;
     font-size: 2em;
     font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
 .student-top-grade {
     margin-top: 5px;
     font-size: 2em;
     color: #fff;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
 .student-top-score {
     margin-top: 5px;
     font-size: 2em;
     color: #fff;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
-.student-top
+.student-top .top-text {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.student-top .crown {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+}
+
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 80%; /* Adjusted height */
+    width: 500%;
+    padding: 20px;
+    position: relative;
+    margin: 0 auto; /* Center the podium */
+}
+
+.podium .student-top {
+    margin: 0 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.podium .first-place {
+    background: linear-gradient(45deg, #FFD700, #FFA500); /* Gold gradient */
+    background-size: 200% 200%;
+    z-index: 3;
+    animation: growHeight 2s ease forwards;
+}
+
+.podium .second-place {
+    background: linear-gradient(45deg, #C0C0C0, #A9A9A9); /* Silver gradient */
+    background-size: 200% 200%;
+    z-index: 2;
+    animation: growHeight 2s ease forwards;
+}
+
+.podium .third-place {
+    background: linear-gradient(45deg, #CD7F32, #8B4513); /* Bronze gradient */
+    background-size: 200% 200%;
+    z-index: 1;
+    animation: growHeight 2s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes growHeight {
+    0% { height: 0; }
+    100% { height: var(--final-height); }
+}
+
+.podium .first-place {
+    --final-height: 450px; /* Shorter height */
+}
+
+.podium .second-place {
+    --final-height: 350px; /* Different height */
+}
+
+.podium .third-place {
+    --final-height: 250px; /* Different height */
+}
