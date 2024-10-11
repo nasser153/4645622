@@ -3,51 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Leaderboard</title>
+    <title>Student Leaderboard</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </head>
 <body>
     <div class="logo">
-        <img src="logo.png" alt="School Logo">
+        <img src="logo.png" alt="Logo"> <!-- Update with your logo's filename -->
     </div>
-
     <div class="news-ticker">
         <div class="news-ticker__content">
-            Here goes your Arabic news text moving from right to left.
+            <p id="news-text">Here goes your Arabic news text moving from right to left.</p>
         </div>
     </div>
-
-    <div id="leaderboard-all" class="leaderboard">
-        <h1 id="الأعلى-رصيد-على-مستوى-الفصول" class="header">الأعلى رصيد على مستوى الفصول</h1>
-        <div id="studentList-all" class="student-list"></div>
+    <div class="leaderboard" id="leaderboard-all">
+        <h1 class="header">الأعلى رصيد على مستوى الفصول</h1>
+        <div class="student-list" id="studentList-all"></div>
     </div>
-
-    <div id="leaderboard-4" class="leaderboard">
-        <h1 id="th-grade-leaderboard" class="header">4th Grade Leaderboard</h1>
-        <div id="studentList-4" class="student-list"></div>
+    <div class="leaderboard" id="leaderboard-4">
+        <h1 class="header">4th Grade Leaderboard</h1>
+        <div class="student-list" id="studentList-4"></div>
     </div>
-
-    <div id="leaderboard-5" class="leaderboard">
-        <h1 id="th-grade-leaderboard-1" class="header">5th Grade Leaderboard</h1>
-        <div id="studentList-5" class="student-list"></div>
+    <div class="leaderboard" id="leaderboard-5">
+        <h1 class="header">5th Grade Leaderboard</h1>
+        <div class="student-list" id="studentList-5"></div>
     </div>
-
-    <div id="leaderboard-6" class="leaderboard">
-        <h1 id="th-grade-leaderboard-2" class="header">6th Grade Leaderboard</h1>
-        <div id="studentList-6" class="student-list"></div>
+    <div class="leaderboard" id="leaderboard-6">
+        <h1 class="header">6th Grade Leaderboard</h1>
+        <div class="student-list" id="studentList-6"></div>
     </div>
-
-    <div id="leaderboard-1-3" class="leaderboard">
-        <h1 id="th-grade-leaderboard-3" class="header">1/3 Class Leaderboard</h1>
-        <div id="studentList-1-3" class="student-list"></div>
-    </div>
-
-    <div id="leaderboard-1-4" class="leaderboard">
-        <h1 id="th-grade-leaderboard-4" class="header">1/4 Class Leaderboard</h1>
-        <div id="studentList-1-4" class="student-list"></div>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        function updateNewsText(newText) {
+            document.getElementById('news-text').textContent = newText;
+        }
+
+        // Example usage:
+        updateNewsText('الطلاب الأعلى رصيد في تحديات مادة اللغة الانجليزية');
+    </script>
 </body>
 </html>
