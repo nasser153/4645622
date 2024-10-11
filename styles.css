@@ -131,7 +131,7 @@ body {
 
 .student-name {
     margin-top: 10px;
-    font-size: 1.5em; /* Increase font size */
+    font-size: 3em; /* Increase font size */
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
