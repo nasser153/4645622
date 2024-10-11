@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const refreshInterval = 30000; // 30 seconds
     const transitionInterval = 10000; // 10 seconds
-    const grades = [4, 5, 6];
+    const grades = [4, 5, 6, '1-3', '1-4'];
     let currentSlideIndex = 0;
 
     function animateScore(element, start, end, duration) {
@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const studentList = document.getElementById(`studentList-${grade}`);
                     studentList.innerHTML = ''; // Clear existing content
 
-                    const gradeStudents = students.filter(student => parseInt(student.grade) === grade);
+                    const gradeStudents = students.filter(student => student.grade === grade.toString());
                     gradeStudents.sort((a, b) => b.score - a.score);
 
                     gradeStudents.forEach((student, index) => {
                         const studentDiv = document.createElement('div');
-                        studentDiv.classList.add('student'); // Apply student class
+                        studentDiv.classList.add('student');
 
                         if (index === 0) {
                             studentDiv.classList.add('top-student');
