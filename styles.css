@@ -61,7 +61,7 @@ body {
 }
 
 .news-ticker__content {
-    font-size: 2em; /* Increased font size */
+    font-size: 3em; /* Increased font size */
     padding: 10px 0; /* Added vertical padding */
 }
 
@@ -88,7 +88,7 @@ body {
 .header {
     text-align: center;
     margin-bottom: 10px; /* Reduce the margin to lessen the gap */
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .student-list {
@@ -132,14 +132,14 @@ body {
 
 .student-name {
     margin-top: 10px;
-    font-size: 2em; /* Increase font size */
+    font-size: 3em; /* Increase font size */
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
 .student-score {
     margin-top: 5px;
-    font-size: 2em; /* Increase font size */
+    font-size: 3em; /* Increase font size */
     color: #fff; /* Ensure the score text is readable */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
@@ -209,21 +209,21 @@ body {
 
 .student-top-name {
     margin-top: 10px;
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
 .student-top-grade {
     margin-top: 5px;
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
 
 .student-top-score {
     margin-top: 5px;
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
 }
@@ -233,7 +233,7 @@ body {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
