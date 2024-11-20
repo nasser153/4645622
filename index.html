@@ -1,53 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Leaderboard</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="logo">
-        <img src="logo.png" alt="Logo">
-    </div>
-
-    <div class="news-ticker">
-        <div class="news-ticker__content">
-      ⭐ قم بتحميل تطبيق كلاس دوجو و تأكد من إكمال تحدي محادثة اللغة الإنجليزية للحصول على نقاط إضافية ⭐ الطلاب الأعلى رصيد في مادة اللغة الانجليزية / أ.ناصر الحربي ⭐ عزيزي الطالب بإمكانك المشاركة بالتحديات خلال الدرس و إضافة نقاط إلى رصيدك ⭐ لتغيير  صورتك الشخصية قم بتحميل كلاس دوجو   
-        </div>
-    </div>
-
-    <div id="leaderboard-all" class="leaderboard">
-        <h1 class="header">الأعلى رصيد على مستوى الفصول</h1>
-        <div id="studentList-all" class="student-list"></div>
-    </div>
-
-    <div id="leaderboard-4" class="leaderboard">
-        <h1 class="header">4th Grade Leaderboard</h1>
-        <div id="studentList-4" class="student-list"></div>
-    </div>
-
-    <div id="leaderboard-5" class="leaderboard">
-        <h1 class="header">5th Grade Leaderboard</h1>
-        <div id="studentList-5" class="student-list"></div>
-    </div>
-
-    <div id="leaderboard-6" class="leaderboard">
-        <h1 class="header">6th Grade Leaderboard</h1>
-        <div id="studentList-6" class="student-list"></div>
-    </div>
-
-    <div id="leaderboard-13" class="leaderboard">
-        <h1 class="header">1/3 Class Leaderboard</h1>
-        <div id="studentList-13" class="student-list"></div>
-    </div>
-
-    <div id="leaderboard-14" class="leaderboard">
-        <h1 class="header">1/4 Class Leaderboard</h1>
-        <div id="studentList-14" class="student-list"></div>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="script.js"></script>
+</head>
+<body>
+    ::: logo
+    ![Logo](logo.png)
+    :::
+
+    :::: news-ticker
+    ::: news-ticker__content
+    ⭐ Download ClassDojo app and complete the English conversation challenge for extra points ⭐ Top scoring students in English / Teacher Nasser ⭐ Dear student, you can participate in challenges during the lesson to add points to your balance ⭐
+    :::
+    ::::
+
+    :::: {#leaderboard-current .leaderboard}
+    # Current Champion {#current-champion .header}
+    ::: {#studentList-current .student-list}
+    :::
+    ::::
+
+    :::: {#leaderboard-future .leaderboard}
+    # Future Champion {#future-champion .header}
+    ::: {#studentList-future .student-list}
+    :::
+    ::::
 </body>
 </html>
