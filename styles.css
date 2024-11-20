@@ -1,7 +1,7 @@
 
 body {
     font-family: 'noorfonts-bold', Arial, sans-serif;
-    background: linear-gradient(270deg, #6a944b, #3979b9, #e9bc44, #365e39);
+    background: linear-gradient(270deg, #6a944b, #3979b9, #e9bc44, #316ba8);
     background-size: 800% 800%;
     animation: gradientAnimation 15s ease infinite;
     color: #fff;
