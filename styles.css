@@ -1,4 +1,3 @@
-
 body {
     font-family: 'noorfonts-bold', Arial, sans-serif;
     background: linear-gradient(270deg, #6a944b, #3979b9, #e9bc44, #316ba8);
@@ -40,7 +39,7 @@ body {
     background: rgba(0, 0, 0, 0.7);
     color: #fff;
     z-index: 1000;
-    height: 100px; /* Increased height */
+    height: 100px;
 }
 
 .news-ticker__content {
@@ -48,25 +47,18 @@ body {
     white-space: nowrap;
     padding-left: 100%;
     animation: ticker 30s linear infinite reverse;
-    line-height: 70px; /* Match the height of the news ticker */
+    line-height: 70px;
+    font-size: 2em;
+    padding: 10px 0;
 }
 
 @keyframes ticker {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.news-ticker__content {
-    font-size: 2em; /* Increased font size */
-    padding: 10px 0; /* Added vertical padding */
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }
 
 .leaderboard {
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -75,7 +67,7 @@ body {
     position: absolute;
     opacity: 0;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out, top 1s ease-in-out;
-    top: 100vh; /* Start below the visible area */
+    top: 100vh;
     transform: scale(1);
 }
 
@@ -87,30 +79,63 @@ body {
 
 .header {
     text-align: center;
-    margin-bottom: 10px; /* Reduce the margin to lessen the gap */
+    margin-bottom: 10px;
     font-size: 2em;
 }
 
 .student-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Increase min-width */
-    gap: 30px; /* Increase gap between boxes */
-    justify-content: center; /* Center the grid horizontally */
-    align-content: center; /* Center the grid vertically */
-    height: 100%; /* Ensure the student list takes the full height */
-    padding: 20px; /* Add padding for better spacing */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    padding: 20px;
 }
 
 .student {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     text-align: center;
-    padding: 20px; /* Increase padding */
+    padding: 20px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeUp 1s ease forwards; /* Apply fadeUp animation once */
-    position: relative; /* For positioning crown and stars */
+    animation: fadeUp 1s ease forwards;
+    position: relative;
+}
+
+.media-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 500;
+}
+
+.media-banner.active {
+    opacity: 1;
+}
+
+.media-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media-content video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @keyframes fadeUp {
@@ -124,40 +149,40 @@ body {
 
 .student img {
     border-radius: 50%;
-    width: 120px; /* Increase width */
-    height: 120px; /* Increase height */
+    width: 120px;
+    height: 120px;
     display: block;
     margin: 0 auto 10px;
 }
 
 .student-name {
     margin-top: 10px;
-    font-size: 2em; /* Increase font size */
+    font-size: 2em;
     font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .student-score {
     margin-top: 5px;
-    font-size: 2em; /* Increase font size */
-    color: #fff; /* Ensure the score text is readable */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .top-student {
-    background: linear-gradient(45deg, #FFD700, #FFA500); /* Gold gradient */
+    background: linear-gradient(45deg, #FFD700, #FFA500);
     background-size: 200% 200%;
     position: relative;
 }
 
 .second-student {
-    background: linear-gradient(45deg, #C0C0C0, #A9A9A9); /* Silver gradient */
+    background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
     background-size: 200% 200%;
     position: relative;
 }
 
 .third-student {
-    background: linear-gradient(45deg, #CD7F32, #8B4513); /* Bronze gradient */
+    background: linear-gradient(45deg, #CD7F32, #8B4513);
     background-size: 200% 200%;
     position: relative;
 }
@@ -185,7 +210,6 @@ body {
     border-radius: 5px;
 }
 
-/* Styles for the top students slide */
 .student-top {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -196,13 +220,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    width: 300px; /* Increase width */
+    width: 300px;
     margin: 10px;
     animation: fadeInUp 1s ease forwards, growHeight 1s ease forwards;
 }
 
 .student-top img {
-    border-radius: 15px; /* Curved corners */
+    border-radius: 15px;
     width: 100px;
     height: 100px;
 }
@@ -211,21 +235,21 @@ body {
     margin-top: 10px;
     font-size: 2em;
     font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .student-top-grade {
     margin-top: 5px;
     font-size: 2em;
     color: #fff;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .student-top-score {
     margin-top: 5px;
     font-size: 2em;
     color: #fff;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .student-top .top-text {
@@ -253,11 +277,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 80%; /* Adjusted height */
+    height: 80%;
     width: 500%;
     padding: 20px;
     position: relative;
-    margin: 0 auto; /* Center the podium */
+    margin: 0 auto;
 }
 
 .podium .student-top {
@@ -270,24 +294,27 @@ body {
 }
 
 .podium .first-place {
-    background: linear-gradient(45deg, #FFD700, #FFA500); /* Gold gradient */
+    background: linear-gradient(45deg, #FFD700, #FFA500);
     background-size: 200% 200%;
     z-index: 3;
     animation: growHeight 2s ease forwards;
+    --final-height: 450px;
 }
 
 .podium .second-place {
-    background: linear-gradient(45deg, #C0C0C0, #A9A9A9); /* Silver gradient */
+    background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
     background-size: 200% 200%;
     z-index: 2;
     animation: growHeight 2s ease forwards;
+    --final-height: 350px;
 }
 
 .podium .third-place {
-    background: linear-gradient(45deg, #CD7F32, #8B4513); /* Bronze gradient */
+    background: linear-gradient(45deg, #CD7F32, #8B4513);
     background-size: 200% 200%;
     z-index: 1;
     animation: growHeight 2s ease forwards;
+    --final-height: 250px;
 }
 
 @keyframes fadeInUp {
@@ -298,16 +325,4 @@ body {
 @keyframes growHeight {
     0% { height: 0; }
     100% { height: var(--final-height); }
-}
-
-.podium .first-place {
-    --final-height: 450px; /* Shorter height */
-}
-
-.podium .second-place {
-    --final-height: 350px; /* Different height */
-}
-
-.podium .third-place {
-    --final-height: 250px; /* Different height */
 }
