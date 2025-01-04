@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function fetchData() {
         // Replace this URL with your actual Google Sheets published CSV URL
-        const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSRwqATt4_bfYL87qgBZSMyfubiRBkgs20ftZiCDAa0l8SlZC7Jg_9RI2v6o-ipp9yq2JyMh6FNVYj/pubhtml';
+        const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSRwqATt4_bfYL87qgBZSMyfubiRBkgs20ftZiCDAa0l8SlZC7Jg_9RI2v6o-ipp9yq2JyMh6FNVYj/pub?output=csv';
         
         fetch(sheetURL)
             .then(response => {
